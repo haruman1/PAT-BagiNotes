@@ -16,6 +16,7 @@ class Auth extends BaseController
         $this->AuthModel = new AuthModel();
         $this->builder = $this->db->table('user');
         $this->validation = \Config\Services::validation();
+        $this->session = \Config\Services::session();
     }
     public function index()
     {
@@ -55,11 +56,12 @@ class Auth extends BaseController
         //     ]);
         // }
 
-        return view('auth/viewRegister', [
+        return view('template/auth/header') . view('auth/viewRegister', [
             'validation' => $this->validation,
+            'session' => $this->session,
             'title' => 'Register' . $_ENV['app.name'],
-        ], $data);
-        // . view('template/auth/footer');
+        ], $data)
+            . view('template/auth/footer');
         // $data = [
         //     'nama' => $this->request->getPost('nama_user'),
         //     'username' => $this->request->getPost('username_user'),
@@ -181,7 +183,13 @@ class Auth extends BaseController
             return redirect()->to('/login');
         } else {
             $data['validation'] = $this->validator;
-            return view('auth/viewRegister', $data);
+            $data['session'] = $this->session;
+            return view('template/auth/header') . view('auth/viewRegister', [
+                'validation' => $this->validation,
+                'session' => $this->session,
+                'title' => 'Register' . $_ENV['app.name'],
+            ], $data)
+                . view('template/auth/footer');
         }
     }
     public function valid_password($password = '')

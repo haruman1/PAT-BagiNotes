@@ -1,58 +1,81 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-
-    <title>Register</title>
-</head>
-
-<body>
+<section class="text-center py-0">
+    <div class="bg-holder overlay overlay-1" style="background-image:url(<?php echo base_url('/') ?>/asset/img/bg4.jpg);"></div>
+    <!--/.bg-holder-->
     <div class="container">
-        <div class="row justify-content-md-center">
+        <div class="row min-vh-100 align-items-center">
+            <div class="col-md-9 col-lg-6 mx-auto" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+                <div class="mb-0" data-zanim-xs='{"delay":0,"duration":1}'>
+                    <a href="<?php echo base_url('/') ?>"><img src="<?php echo base_url('/') ?>/asset/img/logo/128x128/E-Lib Logo White.png" alt="logo" /></a>
+                </div>
+                <div class="card" data-zanim-xs='{"delay":0.1,"duration":1}'>
+                    <div class="card-body p-md-5">
 
-            <div class="col-6">
-                <h1>Sign Up</h1>
-                <?php if (isset($validation)) :
-                    echo ' <div class="alert alert-danger">' .   $validation->listErrors()  . '</div>'
-                ?>
+                        <h4 class="text-uppercase fs-0 fs-md-1">create your <?php echo getenv('app.name') ?> account</h4>
+                        <form class="text-start mt-4 needs-validation" method="POST" action="/register">
+                            <?php if (isset($validation)) :
+                                echo ' <div class="alert alert-danger">' .   $validation->listErrors()  . '</div>'
+                            ?>
+                            <?php endif; ?>
+                            <div class=" row align-items-center g-4">
+                                <div class="col-12"> <input class="form-control" type="text" placeholder="Masukkan Nama Full Anda" aria-label="Fullname" name="nama_user" id="nama_anda" />
 
-                <?php endif; ?>
-                <form action="/register" method="post">
-                    <div class="mb-3">
-                        <label for="InputForName" class="form-label">Name</label>
-                        <input type="text" name="nama_user" class="form-control" id="InputForName" value="<?= set_value('nama_user') ?>">
+                                    <?php
+                                    if ($session->getFlashdata('errorNama')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorNama') . '</small>';
+                                    }
+                                    ?>
+                                </div>
+
+                                <div class="col-12"><input class="form-control" type="email" placeholder="Email Address" aria-label="Email Address" name="email_user" id="regist_email" />
+                                    <?php
+                                    if ($session->getFlashdata('errorEmail')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorEmail') . '</small>';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="col-12"><input class="form-control" type="username" placeholder="Masukkan Username Anda" aria-label="Username" name="username_user" />
+                                    <?php
+                                    if ($session->getFlashdata('errorUsername')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorUsername') . '</small>';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="col-12"><input class="form-control" type="Password" placeholder="Password" aria-label="Password" name="password_user" />
+                                    <?php
+                                    if ($session->getFlashdata('errorPassword')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorPassword') . '</small>';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="col-12"><input class="form-control" type="Password" placeholder="Confirm Password" aria-label="Confirm Password" name="confirmation_password" />
+                                    <?php
+                                    if ($session->getFlashdata('errorPasswordConf')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorPasswordConf') . '</small>';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row align-items-center mt-3">
+                                <div class="col-12 mt-2 mt-sm-3"><button class="btn btn-primary w-100" type="submit">Create Account</button></div>
+                                <div class="col-12 mt-2 mt-sm-3">
+                                    <p class="mb-0 text-sm mx-auto">
+                                        Already have account?
+                                        <?php
+                                        echo anchor('/auth/login.php', 'Login', 'class="text-info text-gradient font-weight-bold"');
+                                        ?>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="InputForUsername" class="form-label">Usenrame</label>
-                        <input type="text" name="username_user" class="form-control" id="InputForUsername" value="<?= set_value('username_user') ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="InputForEmail" class="form-label">Email address</label>
-                        <input type="email" name="email_user" class="form-control" id="InputForEmail" value="<?= set_value('email_user') ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="InputForPassword" class="form-label">Password</label>
-                        <input type="password" name="password_user" class="form-control" id="InputForPassword">
-                    </div>
-                    <div class="mb-3">
-                        <label for="InputForConfPassword" class="form-label">Confirm Password</label>
-                        <input type="password" name="confirmation_password" class="form-control" id="InputForConfPassword">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
+                </div>
             </div>
-
         </div>
+    </div><!-- end of .container-->
     </div>
-
-    <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </div>
+    </div>
+    </div>
+    </div><!-- end of .container-->
+</section>
