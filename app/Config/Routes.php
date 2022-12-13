@@ -37,10 +37,14 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->add('/login', 'Auth::index');
+$routes->get('/register', 'Auth::register');
+$routes->post('/register', 'Auth::save');
+// $routes->post('/register', 'Auth::register');
 $routes->get('/api/user', 'HandlerLogin::index');
-$routes->get('/api/user/(:num)', 'HandlerLogin::show/$1');
+$routes->get('/api/user/(:num)', 'HandlerLogin::index/$1');
 $routes->post('/api/user', 'HandlerLogin::create');
 $routes->put('/api/user/(:num)', 'HandlerLogin::update/$1');
+// $routes->patch('/api/user/(:num)', 'HandlerLogin::update/$1');
 $routes->delete('/api/user/(:num)', 'HandlerLogin::delete/$1');
 
 /*
