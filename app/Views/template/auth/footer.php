@@ -17,7 +17,25 @@
 <script src="<?php echo base_url() ?>/vendor/gsap/gsap.js"></script>
 <script src="<?php echo base_url() ?>/vendor/gsap/customEase.js"></script>
 <!-- <script src="<?php echo base_url('asset/js/') ?>/sweetalert.js/theme.js"></script> -->
-<script src="<?php echo base_url('asset/js/') ?>/sweetalert.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php if (!empty($validation) == NULL) {
+    // last request was more than 2 hours ago
+    echo "<script>
+        Swal.fire({
+            title: 'Error!',
+            text: 'Ada kesalahan dalam pengisian form',
+            icon: 'error',
+            confirmButtonText: 'Mari lihat'
+          })</script>";
+    session_unset();     // unset $_SESSION variable for this page
+    session_destroy();   // destroy session data
+
+} else {
+    echo '';
+    $session->stop();
+}
+
+?>
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

@@ -14,45 +14,56 @@
                         <form class="text-start mt-4 needs-validation" method="POST" action="/register">
                             <?php if (isset($validation)) :
                                 echo ' <div class="alert alert-danger">' .   $validation->listErrors()  . '</div>'
+
                             ?>
                             <?php endif; ?>
+
+                            <?php echo csrf_field() ?>
                             <div class=" row align-items-center g-4">
-                                <div class="col-12"> <input class="form-control" type="text" placeholder="Masukkan Nama Full Anda" aria-label="Fullname" name="nama_user" id="nama_anda" />
 
+                                <div class="col-12">
                                     <?php
-                                    if ($session->getFlashdata('errorNama')) {
-                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorNama') . '</small>';
+                                    if ($session->getTempdata('errorNama')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorNama') . '</small>';
                                     }
                                     ?>
+                                    <input class="form-control" type="text" placeholder="Masukkan Nama Full Anda" aria-label="Fullname" name="nama_user" id="nama_anda" value="<?= set_value('nama_user') ?>" />
                                 </div>
 
-                                <div class="col-12"><input class="form-control" type="email" placeholder="Email Address" aria-label="Email Address" name="email_user" id="regist_email" />
+                                <div class="col-12">
                                     <?php
-                                    if ($session->getFlashdata('errorEmail')) {
-                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorEmail') . '</small>';
+                                    if ($session->getTempdata('errorEmail')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorEmail') . '</small>';
                                     }
                                     ?>
+                                    <input class="form-control" type="email" placeholder="Email Address" aria-label="Email Address" name="email_user" id="regist_email" value="<?= set_value('email_user') ?>" />
+
                                 </div>
-                                <div class="col-12"><input class="form-control" type="username" placeholder="Masukkan Username Anda" aria-label="Username" name="username_user" />
+
+                                <div class="col-12">
                                     <?php
-                                    if ($session->getFlashdata('errorUsername')) {
-                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorUsername') . '</small>';
+                                    if ($session->getTempdata('errorUsername')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorUsername') . '</small>';
                                     }
                                     ?>
+                                    <input class="form-control" type="username" placeholder="Masukkan Username Anda" aria-label="Username" name="username_user" value="<?= set_value('username_user') ?>" />
                                 </div>
-                                <div class="col-12"><input class="form-control" type="Password" placeholder="Password" aria-label="Password" name="password_user" />
+
+                                <div class="col-12">
                                     <?php
-                                    if ($session->getFlashdata('errorPassword')) {
-                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorPassword') . '</small>';
+                                    if ($session->getTempdata('errorPassword')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorPassword') . '</small>';
                                     }
-                                    ?>
+                                    ?><input class="form-control" type="Password" placeholder="Password" aria-label="Password" name="password_user" />
+
                                 </div>
-                                <div class="col-12"><input class="form-control" type="Password" placeholder="Confirm Password" aria-label="Confirm Password" name="confirmation_password" />
+                                <div class="col-12">
                                     <?php
-                                    if ($session->getFlashdata('errorPasswordConf')) {
-                                        echo ' <small class="text-danger pl-3">' . $session->getFlashdata('errorPasswordConf') . '</small>';
+                                    if ($session->getTempdata('errorPasswordConf')) {
+                                        echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorPasswordConf') . '</small>';
                                     }
-                                    ?>
+                                    ?><input class="form-control" type="Password" placeholder="Confirm Password" aria-label="Confirm Password" name="confirmation_password" />
+
                                 </div>
                             </div>
                             <div class="row align-items-center mt-3">
@@ -61,7 +72,7 @@
                                     <p class="mb-0 text-sm mx-auto">
                                         Already have account?
                                         <?php
-                                        echo anchor('/auth/login.php', 'Login', 'class="text-info text-gradient font-weight-bold"');
+                                        echo anchor('/login', 'Login', 'class="text-info text-gradient font-weight-bold"');
                                         ?>
 
                                     </p>
