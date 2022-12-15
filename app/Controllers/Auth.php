@@ -86,7 +86,7 @@ class Auth extends BaseController
                 ],
             ],
             'nama_user' => [
-                'rules' => 'required|min_length[3]|max_length[20]|alpha_numeric_spaces',
+                'rules' => 'required|min_length[3]|max_length[20]',
                 'errors' => [
                     'required' => 'Nama wajib di isi',
                     'min_length[3]' => 'Nama terlalu pendek',
@@ -105,7 +105,7 @@ class Auth extends BaseController
                 ],
             ],
             'password_user' => [
-                'rules' => 'required|trim|min_length[3]|reg',
+                'rules' => 'required|trim|min_length[3]',
                 'errors' => [
                     'required' => 'Password wajib di isi',
                     'min_length[3]' => 'Password terlalu pendek',
@@ -149,11 +149,11 @@ class Auth extends BaseController
             // $this->session->set('errorNama',);
             $data['validation'] = $this->validator;
             $data['session'] = $this->session;
-            $this->session->setTempdata('errorEmail', $this->validation->getError('email_user'), 60);
-            $this->session->setTempdata('errorUsername', $this->validation->getError('username_user'), 60);
-            $this->session->setTempdata('errorNama', $this->validation->getError('nama_user'), 60);
-            $this->session->setTempdata('errorPassword', $this->validation->getError('password_user'), 60);
-            $this->session->setTempdata('errorPasswordConf', $this->validation->getError('confirmation_password'), 60);
+            $this->session->setTempdata('errorEmail', $this->validation->getError('email_user'), 10);
+            $this->session->setTempdata('errorUsername', $this->validation->getError('username_user'), 10);
+            $this->session->setTempdata('errorNama', $this->validation->getError('nama_user'), 10);
+            $this->session->setTempdata('errorPassword', $this->validation->getError('password_user'), 10);
+            $this->session->setTempdata('errorPasswordConf', $this->validation->getError('confirmation_password'), 10);
             return view('template/auth/header') . view('auth/viewRegister', [
                 'validation' => $this->validation,
                 'session' => $this->session,

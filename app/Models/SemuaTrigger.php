@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class HomeModel extends Model
+class SemuaTrigger extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'homes';
+    protected $table            = 'semuatriggers';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -39,4 +39,12 @@ class HomeModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    public function transaksiInsertTrigger()
+    {
+        $query = $this->db->query('CREATE TRIGGER log_insert_user AFTER INSERT ON user FOR EACH ROW begin
+        INSERT INTO log_user(id_user,nama_user,email_user,waktu_terdaftar,keterangan)
+        VALUES (NEW.id_user, NEW.nama_lengkap, NEW.email, NOW(), "insert data user baru");
+        END');
+        return $query;
+    }
 }

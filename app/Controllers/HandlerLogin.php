@@ -15,6 +15,7 @@ class HandlerLogin extends ResourceController
         $this->handler = new HandlerModel();
         $this->builder = $this->db->table('user');
         $this->validation = \Config\Services::validation();
+        $this->client = \Config\Services::curlrequest();
     }
     use ResponseTrait;
     // get all product
@@ -39,7 +40,7 @@ class HandlerLogin extends ResourceController
             }
 
             if ($count == 0) {
-                $this->response->setStatusCode(404);
+                $this->response->setStatusCode(404, 'Nope. Not here.');
                 $data = [
                     'statusCode' => 404,
                     'status' => 'failed',
@@ -181,6 +182,18 @@ class HandlerLogin extends ResourceController
             ]
         ];
         return $this->respond($response);
+    }
+    public function hitApi()
+    {
+
+        $response = $this->client->request('GET', 'https://api.myip.com/', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+        $result = $response->getBody();
+        return $result;
     }
     // public function update($id = null)
     // {

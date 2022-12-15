@@ -13,7 +13,7 @@
                         <h4 class="text-uppercase fs-0 fs-md-1">create your <?php echo getenv('app.name') ?> account</h4>
                         <form class="text-start mt-4 needs-validation" method="POST" action="/register">
                             <?php if (isset($validation)) :
-                                echo ' <div class="alert alert-danger">' .   $validation->listErrors()  . '</div>'
+                                // echo ' <div class="alert alert-danger">' .   $validation->listErrors()  . '</div>'
 
                             ?>
                             <?php endif; ?>
@@ -23,7 +23,7 @@
 
                                 <div class="col-12">
                                     <?php
-                                    if ($session->getTempdata('errorNama')) {
+                                    if ($session->getTempdata('errorNama', 60)) {
                                         echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorNama') . '</small>';
                                     }
                                     ?>
