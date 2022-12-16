@@ -36,8 +36,17 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/trigger/user', 'SemuaTrigger::TriggerUser');
-$routes->get('/trigger/transaksi', 'SemuaTrigger::transaksiTrigger');
+
+
+
+$routes->get('/trigger/user', 'SemuaTrigger::TriggerInsertUser');
+$routes->get('/prod/user', 'SemuaTrigger::procedureCreateUser');
+$routes->get('/trigger/hapus/buku', 'SemuaTrigger::trigger_hapus_buku');
+$routes->get('/trigger/transaksi', 'SemuaTrigger::transaksi_insert_Trigger');
+
+
+
+
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::loginSave');
 $routes->get('/register', 'Auth::register');

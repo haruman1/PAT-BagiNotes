@@ -17,6 +17,10 @@ class LogBuku extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'keterangan' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'waktu' => [
                 'type' => 'datetime',
 
