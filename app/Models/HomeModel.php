@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class HomeModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'homes';
-    protected $primaryKey       = 'id';
+    protected $table            = 'trendingbook,';
+    protected $primaryKey       = 'id_buku';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

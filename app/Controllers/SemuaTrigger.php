@@ -152,6 +152,23 @@ class SemuaTrigger extends BaseController
             return view('trigger/gagal', $data);
         }
     }
+    public function update_jumlah_peminjaman()
+    {
+
+        if ($this->sModel->update_jumlah_peminjaman() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan update_jumlah_peminjaman',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan update_jumlah_peminjaman',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
+    }
     public function update_stok_pengembalian()
     {
 

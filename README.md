@@ -3,10 +3,13 @@
 buat buka server nya
 
 - php spark serve
+
+# Buat database
+
 - php spark migrate
 
-# buat database dan trigger
+# buat trigger
 
-- /trigger/berhasil
-- /registrasi
-- / login
+- /trigger
+
+Langsung muncul semua data nya
