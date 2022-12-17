@@ -14,26 +14,159 @@ class SemuaTrigger extends BaseController
     }
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Semua Trigger',
+
+        ];
+        return view('trigger/index', $data);
+    }
+    public function log_delete_user()
+    {
+        if ($this->sModel->log_delete_user() == TRUE) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan log_delete_user',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $anu = $this->db->error();
+            $data = [
+                'pesan' => 'Gagal menambahkan log_delete_user',
+                'error' =>  $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
+    }
+    public function log_update_user()
+    {
+        if ($this->sModel->log_update_user() == TRUE) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan log_update_user',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan log_update_user',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
     }
     public function TriggerInsertUser()
     {
-        $this->sModel->log_insert_user();
-        $berhasil =   print_r($this->db->error());
+        if ($this->sModel->log_insert_user() == TRUE) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan log insert user',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan log insert user',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
     }
     public function transaksi_insert_Trigger()
     {
-        $this->sModel->transaksi_insert();
-        $berhasil =   print_r($this->db->error());
+        if ($this->sModel->transaksi_insert() == TRUE) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan log insert user',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan log insert user',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
     }
     public function procedureCreateUser()
     {
-        $this->sModel->procedureCreateUser();
-        $berhasil =   print_r($this->db->error());
+        if ($this->sModel->procedureCreateUser() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan procedure create user',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan procedureCreateUser',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
     }
     public function trigger_hapus_buku()
     {
-        $this->sModel->trigger_hapus_buku();
-        $berhasil =   print_r($this->db->error());
+
+        if ($this->sModel->trigger_hapus_buku() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan trigger_hapus_buku',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan trigger_hapus_buku',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
+    }
+    public function trigger_penambahan_buku()
+    {
+
+        if ($this->sModel->trigger_penambahan_buku() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan trigger_penambahan_buku',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan trigger_penambahan_buku',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
+    }
+    public function trigger_perubahan_buku()
+    {
+
+        if ($this->sModel->trigger_perubahan_buku() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan trigger_perubahan_buku',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan trigger_perubahan_buku',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
+    }
+    public function update_stok_pengembalian()
+    {
+
+        if ($this->sModel->update_stok_pengembalian() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan update_stok_pengembalian',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan update_stok_pengembalian',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
     }
 }

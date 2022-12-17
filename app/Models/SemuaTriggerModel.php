@@ -39,11 +39,20 @@ class SemuaTriggerModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
     public function log_insert_user()
     {
         $query = $this->db->query('CREATE TRIGGER log_insert_user AFTER INSERT ON User FOR EACH ROW begin
         INSERT INTO log_user(id_user,nama_user,email_user,waktu_terdaftar,keterangan)
         VALUES (NEW.id_user, NEW.nama_lengkap, NEW.email, NOW(), "insert data user baru");
+        END');
+        return $query;
+    }
+    public function log_delete_user()
+    {
+        $query = $this->db->query('CREATE TRIGGER `log_delete_user` BEFORE UPDATE ON `User` FOR EACH ROW begin
+        INSERT INTO log_user(id_user,nama_user,email_user,waktu_terdaftar,keterangan)
+        VALUES (Old.id_user, old.nama_lengkap, old.email,NOW(),"Hapus data user");
         END');
         return $query;
     }
@@ -77,8 +86,8 @@ class SemuaTriggerModel extends Model
     {
         $query = $this->db->query('CREATE TRIGGER `trigger_hapus_buku` AFTER DELETE ON `hlmnbuku` FOR EACH 
         ROW BEGIN
-        INSERT INTO log_buku (keterangan, waktu, id_buku, id_user, judul_buku)
-        VALUES("Menghapus buku", NOW(), OLD.id_buku, OLD.id_user, OLD.judul_buku);
+        INSERT INTO log_buku (keterangan, waktu, id_buku, judulbuku)
+        VALUES("Menghapus buku", NOW(), OLD.id_buku, OLD.judulbuku);
         END');
         return $query;
     }
@@ -86,8 +95,8 @@ class SemuaTriggerModel extends Model
     {
         $query = $this->db->query('CREATE TRIGGER `trigger_penambahan_buku` AFTER INSERT ON `hlmnbuku` FOR EACH 
         ROW BEGIN
-        INSERT INTO log_buku (keterangan, waktu, id_buku, id_user, judul_buku)
-        VALUES("Menambah buku", NOW(), NEW.id_buku, NEW.id_user, NEW.judul_buku);
+        INSERT INTO log_buku (keterangan, waktu, id_buku, judulbuku)
+        VALUES("Menambah buku", NOW(), NEW.id_buku, NEW.judulbuku);
         END');
         return $query;
     }
@@ -95,8 +104,24 @@ class SemuaTriggerModel extends Model
     {
         $query = $this->db->query('CREATE TRIGGER `trigger_perubahan_buku` AFTER UPDATE ON `hlmnbuku` FOR EACH 
         ROW BEGIN
-        INSERT INTO log_buku (keterangan, waktu, id_buku, id_user, judul_buku)
-        VALUES("Menambah buku", NOW(), NEW.id_buku, NEW.id_user, NEW.judul_buku);
+        INSERT INTO log_buku (keterangan, waktu, id_buku, id_user, judulbuku)
+        VALUES("Menambah buku", NOW(), NEW.id_buku, NEW.judulbuku);
+        END');
+        return $query;
+    }
+    public function update_jumlah_peminjaman()
+    {
+        $query = $this->db->query('CREATE TRIGGER `update_jumlah_peminjaman` AFTER INSERT ON `mybook` FOR EACH ROW BEGIN
+        UPDATE hlmnbuku SET total_pinjam = total_pinjam + 1  WHERE id_buku = new.id_buku ;
+    
+        END');
+        return $query;
+    }
+
+    public function update_stok_pengembalian()
+    {
+        $query = $this->db->query('CREATE TRIGGER `update_stok_pengembalian` AFTER DELETE ON `mybook` FOR EACH ROW BEGIN
+        UPDATE hlmnbuku SET stok = stok + 1 WHERE id_buku = OLD.id_buku;
         END');
         return $query;
     }

@@ -28,8 +28,8 @@ class Mybook extends Migration
                 'null' => true,
             ],
             'id_user' => [
-                'type' => 'DATETIME',
-                'null' => true,
+                'type' => 'VARCHAR',
+                'constraint' => '100',
             ],
 
         ]);
@@ -37,14 +37,16 @@ class Mybook extends Migration
         $this->forge->addKey('id', true);
 
         $this->forge->addUniqueKey('id_user');
+        $this->forge->addUniqueKey('id_buku');
         $this->forge->addUniqueKey('id');
         $this->forge->addForeignKey('id_user', 'User', 'id_user');
+        $this->forge->addForeignKey('id_buku', 'bukutersedia', 'id_buku');
 
         $this->forge->createTable('mybook', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('log_user');
+        $this->forge->dropTable('mybook');
     }
 }

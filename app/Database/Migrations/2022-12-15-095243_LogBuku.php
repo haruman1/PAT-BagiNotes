@@ -33,7 +33,7 @@ class LogBuku extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'judul_buku' => [
+            'judulbuku' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
@@ -41,7 +41,7 @@ class LogBuku extends Migration
         $this->forge->addKey('id_log_buku', true);
         $this->forge->addUniqueKey('id_user');
         $this->forge->addUniqueKey('id_buku');
-        $this->forge->addUniqueKey('judul_buku');
+        $this->forge->addUniqueKey('judulbuku');
         $this->forge->addForeignKey('id_buku', 'bukutersedia', 'id_buku');
         $this->forge->addForeignKey('id_user', 'User', 'id_user');
 

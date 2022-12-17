@@ -36,13 +36,57 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+//manggil nya
+$routes->get('/trigger', 'SemuaTrigger::index');
+$routes->get('/trigger/log/delete', 'SemuaTrigger::log_delete_user');
+$routes->get('/trigger/log/insert', 'SemuaTrigger::TriggerInsertUser');
+$routes->get('/trigger/log/update', 'SemuaTrigger::log_update_user');
+$routes->get('/trigger/transaksi/insert', 'SemuaTrigger::transaksi_insert_Trigger');
+$routes->get('/prod/insert', 'SemuaTrigger::procedureCreateUser');
+$routes->get('/trigger/buku/delete', 'SemuaTrigger::trigger_hapus_buku');
+$routes->get('/trigger/buku/insert', 'SemuaTrigger::trigger_penambahan_buku');
+$routes->get('/trigger/buku/update', 'SemuaTrigger::trigger_perubahan_buku');
+$routes->get('/trigger/buku/jumlah', 'SemuaTrigger::update_jumlah_peminjaman');
+$routes->get('/trigger/buku/stok', 'SemuaTrigger::update_stok_pengembalian');
+
+//hasilnya
+$routes->get('/trigger/berhasil', 'SemuaTrigger::log_delete_user');
+$routes->get('/trigger/gagal', 'SemuaTrigger::log_delete_user');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::log_insert_user');
+$routes->get('/trigger/gagal', 'SemuaTrigger::log_insert_user');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::log_update_user');
+$routes->get('/trigger/gagal', 'SemuaTrigger::log_update_user');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::transaksi_insert');
+$routes->get('/trigger/gagal', 'SemuaTrigger::transaksi_insert');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::procedureCreateUser');
+$routes->get('/trigger/gagal', 'SemuaTrigger::procedureCreateUser');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::trigger_hapus_buku');
+$routes->get('/trigger/gagal', 'SemuaTrigger::trigger_hapus_buku');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::trigger_penambahan_buku');
+$routes->get('/trigger/gagal', 'SemuaTrigger::trigger_penambahan_buku');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::trigger_perubahan_buku');
+$routes->get('/trigger/gagal', 'SemuaTrigger::trigger_perubahan_buku');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::update_jumlah_peminjaman');
+$routes->get('/trigger/gagal', 'SemuaTrigger::update_jumlah_peminjaman');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::update_stok_pengembalian');
+$routes->get('/trigger/gagal', 'SemuaTrigger::update_stok_pengembalian');
 
 
 
-$routes->get('/trigger/user', 'SemuaTrigger::TriggerInsertUser');
-$routes->get('/prod/user', 'SemuaTrigger::procedureCreateUser');
-$routes->get('/trigger/hapus/buku', 'SemuaTrigger::trigger_hapus_buku');
-$routes->get('/trigger/transaksi', 'SemuaTrigger::transaksi_insert_Trigger');
+// $routes->get('/trigger/user', 'SemuaTrigger::TriggerInsertUser');
+// $routes->get('/prod/user', 'SemuaTrigger::procedureCreateUser');
+
+// $routes->get('/trigger/hapus/buku', 'SemuaTrigger::trigger_hapus_buku');
+// $routes->get('/trigger/transaksi', 'SemuaTrigger::transaksi_insert_Trigger');
 
 
 
