@@ -46,7 +46,7 @@
 
             ?>
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card h-100"><a href="<?php echo base_url('') ?>/category/borrow.php?id_buku=<?= $result['id_buku']; ?>"><img class="card-img-top" src="<?php echo base_url('')  ?>/asset/img/buku/<?= $result['cover_buku'] ?>" alt="<?= $result['judulbuku'] ?>" />
+                    <div class="card h-100"><a href="<?php echo base_url('') ?>/category/borrow?id_buku=<?= $result['id_buku']; ?>"><img class="card-img-top" src="<?php echo base_url('')  ?>/asset/img/buku/<?= $result['cover_buku'] ?>" alt="<?= $result['judulbuku'] ?>" />
                             <div class="card-body" data-zanim-timeline="{}" data-zanim-trigger="scroll">
                                 <div class="overflow-hidden">
                                     <h5 data-zanim-xs='{"delay":0}'><?= $result['judulbuku'] ?></h5>
@@ -55,7 +55,7 @@
                                     <h6 class="fw-normal text-500" data-zanim-xs='{"delay":0.1}'><?= $result['author'] ?></h6>
                                 </div>
                                 <div class="overflow-hidden">
-                                    <div class="d-inline-block" data-zanim-xs='{"delay":0.3}'><a class="d-flex align-items-center" href="<?php echo base_url('')  ?>/category/borrow.php?id_buku=<?= $result['id_buku'] ?>">Read Now!<div class="overflow-hidden ms-2" data-zanim-xs='{"from":{"opacity":0,"x":-30},"to":{"opacity":1,"x":0},"delay":0.8}'><span class="d-inline-block fw-medium">&xrarr;</span></div></a></div>
+                                    <div class="d-inline-block" data-zanim-xs='{"delay":0.3}'><a class="d-flex align-items-center" href="<?php echo base_url('')  ?>/category/borrow?id_buku=<?= $result['id_buku'] ?>">Read Now!<div class="overflow-hidden ms-2" data-zanim-xs='{"from":{"opacity":0,"x":-30},"to":{"opacity":1,"x":0},"delay":0.8}'><span class="d-inline-block fw-medium">&xrarr;</span></div></a></div>
                                 </div>
                             </div>
                     </div>

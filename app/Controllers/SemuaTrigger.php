@@ -186,4 +186,21 @@ class SemuaTrigger extends BaseController
             return view('trigger/gagal', $data);
         }
     }
+    public function viewTrendingbook()
+    {
+
+        if ($this->sModel->viewTrendingbook() == true) {
+            $data = [
+                'pesan' => 'Berhasil menambahkan viewTrendingbook',
+            ];
+            return view('trigger/berhasil', $data);
+        } else {
+            $data = [
+                'pesan' => 'Gagal menambahkan viewTrendingbook',
+                'error' => $this->db->error(),
+
+            ];
+            return view('trigger/gagal', $data);
+        }
+    }
 }

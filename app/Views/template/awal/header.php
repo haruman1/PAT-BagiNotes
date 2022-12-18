@@ -49,16 +49,16 @@
     </div>
     <div class="sticky-top navbar-elixir" style="margin-top: 0px;">
         <div class="container">
-            <nav class="navbar navbar-expand-lg"> <a class="navbar-brand" href="<?php echo base_url('/')  ?>/index.php"><img src="<?php echo base_url('/')  ?>/asset/img/Logo.png" alt="logo" /></a><button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbarCollapse" aria-controls="primaryNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>
+            <nav class="navbar navbar-expand-lg"> <a class="navbar-brand" href="<?php echo base_url('/')  ?>"><img src="<?php echo base_url('/')  ?>/asset/img/Logo.png" alt="logo" /></a><button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbarCollapse" aria-controls="primaryNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger hamburger--emphatic"><span class="hamburger-box"><span class="hamburger-inner"></span></span></span></button>
                 <div class="collapse navbar-collapse" id="primaryNavbarCollapse">
                     <ul class="navbar-nav py-3 py-lg-0 mt-1 mb-2 my-lg-0 ms-lg-n1">
                         <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/index.php" role="button">Home</a></li>
-                        <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/category/book.php" role="button">Category</a></li>
+                        <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/category" role="button">Category</a></li>
                         <?php if (isset($_SESSION['nama'])) { ?>
-                            <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/category/mybook.php" role="button">My Book</a></li>
+                            <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/category/mybook" role="button">My Book</a></li>
                         <?php } else {
                         } ?>
-                        <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/about.php" role="button">About Us</a></li>
+                        <li class="nav-item "><a class="nav-link" href="<?php echo base_url('/')  ?>/about" role="button">About Us</a></li>
                     </ul>
 
                     <?php
@@ -67,7 +67,7 @@
                         <ul class="navbar-nav py-3 py-lg-0 mt-1 mb-2 my-lg-0 ms-auto">
                             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle dropdown-indicator" href="JavaScript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $fetchdata['nama'] ?><i class="far fa-user-circle fa-lg mx-2"></i></a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="<?php echo base_url('/')  ?>/auth/logout.php">Log Out</a>
+                                    <a class="dropdown-item" href="<?php echo base_url('/')  ?>/auth/logout">Log Out</a>
                                 </div>
                             </li>
                         </ul>

@@ -125,4 +125,10 @@ class SemuaTriggerModel extends Model
         END');
         return $query;
     }
+    public function viewTrendingbook()
+    {
+        $query = $this->db->query('CREATE VIEW `trendingbook` AS
+        SELECT `id_buku`, `kategoribuku`,`judulbuku`, `textbuku`,`author`, `file_buku`,`stok`, `cover_buku`,`total_pinjam` FROM hlmnbuku');
+        return $query;
+    }
 }

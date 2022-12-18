@@ -25,4 +25,13 @@ class Home extends BaseController
             . view('home/index', $data)
             . view('/template/awal/footer');
     }
+    public function tentangkita()
+    {
+        $data = [
+            'title' => 'About Us',
+        ];
+        return view('/template/awal/header')
+            . view('home/viewAbout', $data)
+            . view('/template/awal/footer');
+    }
 }

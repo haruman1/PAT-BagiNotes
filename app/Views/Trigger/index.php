@@ -81,9 +81,16 @@
                 <td><?php echo anchor(base_url('/trigger/buku/stok'), 'Klik Aku', 'class="btn btn-success"') ?></td>
 
             </tr>
+            <tr>
+                <th scope="row">10</th>
+                <td>Trending book view</td>
+                <td><?php echo anchor(base_url('/trigger/buku/trending'), 'Klik Aku', 'class="btn btn-success"') ?></td>
+
+            </tr>
 
         </tbody>
     </table>
+    <?php echo anchor(base_url('/'), 'Kembali ke halaman awal', 'class="btn btn-danger"') ?>
 </body>
 
 </html>

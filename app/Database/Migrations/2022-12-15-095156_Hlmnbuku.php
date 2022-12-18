@@ -26,6 +26,10 @@ class Hlmnbuku extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'kategoribuku' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'judulbuku' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',

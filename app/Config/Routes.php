@@ -35,8 +35,14 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// direktori asli
 $routes->get('/', 'Home::index');
-//manggil nya
+$routes->get('/about', 'Home::tentangkita');
+$routes->get('/category', 'CategoryController::index');
+$routes->get('/category/borrow', 'CategoryController::pinjam_buku');
+
+
+//manggil Trigger
 $routes->get('/trigger', 'SemuaTrigger::index');
 $routes->get('/trigger/log/delete', 'SemuaTrigger::log_delete_user');
 $routes->get('/trigger/log/insert', 'SemuaTrigger::TriggerInsertUser');
@@ -48,8 +54,9 @@ $routes->get('/trigger/buku/insert', 'SemuaTrigger::trigger_penambahan_buku');
 $routes->get('/trigger/buku/update', 'SemuaTrigger::trigger_perubahan_buku');
 $routes->get('/trigger/buku/jumlah', 'SemuaTrigger::update_jumlah_peminjaman');
 $routes->get('/trigger/buku/stok', 'SemuaTrigger::update_stok_pengembalian');
+$routes->get('/trigger/buku/trending', 'SemuaTrigger::viewTrendingbook');
 
-//hasilnya
+//hasilnya trigger
 $routes->get('/trigger/berhasil', 'SemuaTrigger::log_delete_user');
 $routes->get('/trigger/gagal', 'SemuaTrigger::log_delete_user');
 
@@ -79,6 +86,9 @@ $routes->get('/trigger/gagal', 'SemuaTrigger::update_jumlah_peminjaman');
 
 $routes->get('/trigger/berhasil', 'SemuaTrigger::update_stok_pengembalian');
 $routes->get('/trigger/gagal', 'SemuaTrigger::update_stok_pengembalian');
+
+$routes->get('/trigger/berhasil', 'SemuaTrigger::viewTrendingbook');
+$routes->get('/trigger/gagal', 'SemuaTrigger::viewTrendingbook');
 
 
 
