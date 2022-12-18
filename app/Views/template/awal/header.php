@@ -74,8 +74,8 @@
                     <?php
                     } else { ?>
                         <ul class="navbar-nav py-3 py-lg-0 mt-1 mb-2 my-lg-0 ms-auto">
-                            <a class="btn btn-outline-primary rounded-pill btn-sm border-2 d-block d-lg-inline-block ms-auto mx-1 my-3 my-lg-0" href="<?php echo base_url('/')  ?>/auth/login.php">Sign In</a>
-                            <a class="btn btn-outline-secondary rounded-pill btn-sm border-2 d-block d-lg-inline-block ms-auto mx-1 my-3 my-lg-0" href="<?php echo base_url('/')  ?>/auth/register.php">Sign Up</a>
+                            <a class="btn btn-outline-primary rounded-pill btn-sm border-2 d-block d-lg-inline-block ms-auto mx-1 my-3 my-lg-0" href="<?php echo base_url('/')  ?>/login">Sign In</a>
+                            <a class="btn btn-outline-secondary rounded-pill btn-sm border-2 d-block d-lg-inline-block ms-auto mx-1 my-3 my-lg-0" href="<?php echo base_url('/')  ?>/register">Sign Up</a>
                         </ul>
                     <?php } ?>
                 </div>

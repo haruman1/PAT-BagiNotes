@@ -42,7 +42,7 @@ class SemuaTriggerModel extends Model
 
     public function log_insert_user()
     {
-        $query = $this->db->query('CREATE TRIGGER log_insert_user AFTER INSERT ON User FOR EACH ROW begin
+        $query = $this->db->query('CREATE TRIGGER log_insert_user AFTER INSERT ON user FOR EACH ROW begin
         INSERT INTO log_user(id_user,nama_user,email_user,waktu_terdaftar,keterangan)
         VALUES (NEW.id_user, NEW.nama_lengkap, NEW.email, NOW(), "insert data user baru");
         END');
@@ -50,7 +50,7 @@ class SemuaTriggerModel extends Model
     }
     public function log_delete_user()
     {
-        $query = $this->db->query('CREATE TRIGGER `log_delete_user` BEFORE UPDATE ON `User` FOR EACH ROW begin
+        $query = $this->db->query('CREATE TRIGGER `log_delete_user` BEFORE UPDATE ON `user` FOR EACH ROW begin
         INSERT INTO log_user(id_user,nama_user,email_user,waktu_terdaftar,keterangan)
         VALUES (Old.id_user, old.nama_lengkap, old.email,NOW(),"Hapus data user");
         END');
@@ -58,7 +58,7 @@ class SemuaTriggerModel extends Model
     }
     public function log_update_user()
     {
-        $query = $this->db->query('CREATE TRIGGER log_update_user AFTER UPDATE ON User FOR EACH ROW begin
+        $query = $this->db->query('CREATE TRIGGER log_update_user AFTER UPDATE ON user FOR EACH ROW begin
         INSERT INTO log_user(id_user,nama_user,email_user,waktu_terdaftar,keterangan)
         VALUES (NEW.id_user, NEW.nama_lengkap, NEW.email, NOW(), "update data user baru");
         END');
@@ -72,11 +72,11 @@ class SemuaTriggerModel extends Model
         END');
         return $query;
     }
-    public function procedureCreateUser()
+    public function procedureCreateuser()
     {
-        $query = $this->db->query('CREATE PROCEDURE `createUser`(IN `id_user` VARCHAR(255), IN `nama_user` VARCHAR(255), IN `username_user` VARCHAR(255), IN `email_user` VARCHAR(100), IN `password_user` VARCHAR(100), IN `role_user` INT(2), IN `is_active_user` INT(5), IN `date_created` INT(100))
+        $query = $this->db->query('CREATE PROCEDURE `createuser`(IN `id_user` VARCHAR(255), IN `nama_user` VARCHAR(255), IN `username_user` VARCHAR(255), IN `email_user` VARCHAR(100), IN `password_user` VARCHAR(100), IN `role_user` INT(2), IN `is_active_user` INT(5), IN `date_created` INT(100))
         BEGIN
-        INSERT INTO User(id_user,nama_lengkap, username, email, password,role,is_active,date_created)
+        INSERT INTO user(id_user,nama_lengkap, username, email, password,role,is_active,date_created)
         VALUES(id_user, nama_user,username_user,email_user, password_user,role_user,is_active_user,date_created);
         END');
 

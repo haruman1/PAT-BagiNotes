@@ -9,7 +9,7 @@ class LogBuku extends Migration
     public function up()
     {
         // $this->db->disableForeignKeyChecks();
-        $this->forge->dropTable('log_buku');
+
         $this->forge->addField([
             'id_log_buku'          => [
                 'type'           => 'INT',

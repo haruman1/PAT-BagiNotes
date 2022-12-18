@@ -42,6 +42,6 @@ class AuthModel extends Model
 
     public function tampilAnggota()
     {
-        return $this->db->table('user')->get()->getResultArray();
+        return $this->db->table('salah_disini2?')->get()->getResultArray();
     }
 }

@@ -50,11 +50,11 @@ class User extends Migration
         $this->forge->addUniqueKey('id_user');
         $this->forge->addUniqueKey('username');
 
-        $this->forge->createTable('User', true);
+        $this->forge->createTable('user', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('User');
+        $this->forge->dropTable('user');
     }
 }

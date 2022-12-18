@@ -8,7 +8,7 @@ class LogUser extends Migration
 {
     public function up()
     {
-        $this->forge->dropTable('log_user');
+
         $this->forge->addField([
             'id_log_anggota'          => [
                 'type'           => 'INT',
