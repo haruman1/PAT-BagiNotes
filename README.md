@@ -13,3 +13,6 @@ buat buka server nya
 - /trigger
 
 Langsung muncul semua data nya
+
+# masukin isi database
+- /database
