@@ -29,6 +29,7 @@ class CategoryController extends BaseController
                 // 'kategori_buku' => $this->db->table('hlmnbuku')->get()->getResultArray()->like('kategoribuku', 'Fiction'),
             ];
             return view('/template/awal/header', $data)
+                . view('template/sidebar/nama-halaman')
                 . view('kategori/index', $data)
                 . view('/template/awal/footer');
         } else {

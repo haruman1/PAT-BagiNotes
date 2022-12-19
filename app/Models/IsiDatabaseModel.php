@@ -41,7 +41,7 @@ class IsiDatabaseModel extends Model
     protected $afterDelete    = [];
     public function bukutersedia()
     {
-        $query = $this->db->query("INSERT INTO `bukutersedia` (`id`, `nama_buku`, `id_buku`, `stock`) VALUES
+        $query = $this->db->query("INSERT INTO `bukutersedia` (`id`, `judulbuku`, `id_buku`, `stok`) VALUES
         (1, 'Memulai Kembali Mengapa Tidak', 'bk01', 15),
         (2, 'Andreatta', 'bk02', 15),
         (3, 'Syair Sang Mentari', 'bk03', 12),

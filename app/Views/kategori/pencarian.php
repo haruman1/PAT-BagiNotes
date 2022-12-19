@@ -82,7 +82,9 @@ if (null !== $request->getGet('submit-search')) {
 <!-- ============================================-->
 <script>
     $(document).ready(function() {
-        $("nama_item_web").html("Search");
-        $("nama-atasnya-web").html("Search");
+        $("h1.nama-atasnya-web").html("Pencarian Buku");
+        $("title").html("Pencarian Buku E-Library");
+        $("li.nama_item_web").html("search");
+
     })
 </script>

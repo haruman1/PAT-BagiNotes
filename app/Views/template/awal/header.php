@@ -16,15 +16,15 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('/asset/img/') ?>/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url('/asset/img/') ?>/32x32/E-Lib Logo White.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('/asset/img/') ?>/16x16/E-Lib Logo White.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('/asset/img/') ?>/32x32/E-Lib Logo White.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url('/asset/img/') ?>/logo/32x32/E-Lib Logo White.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('/asset/img/') ?>/logo/16x16/E-Lib Logo White.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('/asset/img/') ?>/logo/32x32/E-Lib Logo White.png">
 
     <meta name="theme-color" content="#ffffff">
     <script src="<?php echo base_url('') ?>/vendor/overlayscrollbars/OverlayScrollbars.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+    <script src="<?php echo base_url('/') ?>/asset/js/jquery/jquery.min.js"></script>
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
