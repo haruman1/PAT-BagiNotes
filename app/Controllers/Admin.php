@@ -26,8 +26,8 @@ class Admin extends BaseController
                 'session' => $this->session,
             ];
             return view('/template/admin/header', $data)
-                . view('admin/index', $data)
-                . view('/template/admin/footer');
+                . view('admin/index', $data);
+                
         }
     }
     public function anggota()
@@ -42,8 +42,8 @@ class Admin extends BaseController
                 'session' => $this->session,
             ];
             return view('/template/admin/header', $data)
-                . view('admin/kelolaanggota', $data)
-                . view('/template/admin/footer');
+                . view('admin/kelolaanggota', $data);
+                
         }
     }
     public function buku()
@@ -58,8 +58,8 @@ class Admin extends BaseController
                 'session' => $this->session,
             ];
             return view('/template/admin/header', $data)
-                . view('admin/kelolabuku', $data)
-                . view('/template/admin/footer');
+                . view('admin/kelolabuku', $data);
+                
         }
     }
     public function transaksi()
@@ -74,8 +74,7 @@ class Admin extends BaseController
                 'session' => $this->session,
             ];
             return view('/template/admin/header', $data)
-                . view('admin/transaksi', $data)
-                . view('/template/admin/footer');
+                . view('admin/transaksi', $data);
         }
     }
 }

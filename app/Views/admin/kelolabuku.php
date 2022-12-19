@@ -118,7 +118,7 @@ if (isset($_SESSION['nama'])) {
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h2 class="m-0 font-weight-bold text-primary">Kelola Buku</h2>
-                            <a href="#" class="btn btn-primary btn-icon-split addBook" style="margin-top: 10px; margin-bottom: 10px;">
+                            <a href="#" class="btn btn-primary btn-icon-split addBook" style="margin-top: 10px; margin-bottom: 10px;" data-toggle="modal" data-target="#addBookModal">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus-square"></i>
                                         </span>
@@ -248,7 +248,7 @@ if (isset($_SESSION['nama'])) {
                 <div class="modal-body">
                 <form class="user" method="POST" action="book/add">
                                 <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="idbuku"
+                                <input type="text" class="form-control form-control-user" id="add_idbuku"
                                             placeholder="ID Buku" name="id_buku" required>
                                 </div>
                                 <div class="form-group">
@@ -397,29 +397,28 @@ if (isset($_SESSION['nama'])) {
         </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url('/')  ?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url('/')  ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?php echo base_url('/')  ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="<?php echo base_url('/asset')  ?>/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url('/')  ?>/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?php echo base_url('/')  ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url('/')  ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="<?php echo base_url('/asset')  ?>/js/demo/chart-area-demo.js"></script>
+    <script src="<?php echo base_url('/asset')  ?>/js/demo/chart-pie-demo.js"></script>
+    <script src="<?php echo base_url('/asset')  ?>/js/demo/datatables-demo.js"></script>
 
     <!-- Sweet Alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Sweet Alert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
     <?php if(isset($_GET['status']) && $_GET['status'] != '')
     {
     ?>
@@ -455,6 +454,7 @@ if (isset($_SESSION['nama'])) {
 	});
     });
     </script>
+
     <script>
         $(document).ready(function(){
 	    $(document).on('click', '.editButton', function(){
@@ -465,6 +465,7 @@ if (isset($_SESSION['nama'])) {
 	});
     });
     </script>
+
     <script>
         $(document).ready(function(){
 	    $(document).on('click', '.deleteButton', function(){
