@@ -18,7 +18,7 @@ $login_password_valid = false;
                             <?php
                             if ($session->getTempdata('berhasilDaftar', 10)) {
                                 echo ' <small class="text-success pl-3">' . $session->getTempdata('berhasilDaftar') . '</small>';
-                            } else if ($session->getTempdata('errorUsername')) {
+                            } else if ($session->getTempdata('errorUsername', 10)) {
                                 echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorUsername') . '</small>';
                             }
                             ?>

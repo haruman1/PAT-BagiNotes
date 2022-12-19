@@ -38,16 +38,22 @@ class CategoryController extends BaseController
     }
     public function pinjam_buku()
     {
-        $data = [
-            'title' => 'Pinjam Buku',
-            'db' => $this->db,
-            'request' => $this->request,
-        ];
-        return view('/template/awal/header')
-            . view('template/sidebar/nama-halaman')
-            . view('template/sidebar/search-halaman')
-            . view('kategori/viewPinjam', $data)
-            . view('/template/awal/footer');
+        if ($this->session->get('role') == 2 || $this->session->get('role') == NULL) {
+            $data = [
+                'title' => 'Pinjam Buku',
+                'db' => $this->db,
+                'session' => $this->session,
+                'request' => $this->request,
+            ];
+            return view('/template/awal/header')
+                . view('template/sidebar/nama-halaman')
+                . view('template/sidebar/search-halaman')
+                . view('kategori/viewPinjam', $data)
+                . view('/template/awal/footer');
+        } else {
+            $this->session->setTempdata('berhasilDaftar', 'Maaf, akun kamu tidak bisa meminjam buku ', 10);
+            return redirect()->to('/admin');
+        }
     }
     public function search()
     {

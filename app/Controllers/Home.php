@@ -36,6 +36,7 @@ class Home extends BaseController
             'title' => 'About Us',
         ];
         return view('/template/awal/header')
+            . view('template/sidebar/nama-halaman')
             . view('home/viewAbout', $data)
             . view('/template/awal/footer');
     }

@@ -64,8 +64,8 @@
                                                 </div>
                                                 <div class="row mx-7 my-2">
                                                     <div class="col-lg-auto mx-2 align-item-center">
-                                                        <a href="<?php echo base_url()  ?>/auth/login.php" class="btn btn-info btn-block">Masuk</a>
-                                                        <a href="<?php echo base_url()  ?>/auth/register.php" class="btn btn-primary btn-block">Daftar</a>
+                                                        <a href="<?php echo base_url()  ?>/login" class="btn btn-info btn-block">Masuk</a>
+                                                        <a href="<?php echo base_url()  ?>/register" class="btn btn-primary btn-block">Daftar</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -150,15 +150,25 @@
                 <div class="card-body p-5">
                     <h5>Genre</h5>
                     <ul class="nav tags mt-3 fs--1">
-                        <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/#NB">New Releases</a></li>
-                        <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/#F">Fiction</a></li>
+
+                        <?php
+                        $sql = $db->query("SELECT * FROM hlmnbuku where kategoribuku = '$id_buku'");
+                        $data =     $sql->getResultArray();
+                        var_dump($data);
+                        foreach ($data as $data) :
+
+                        ?>
+                            <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/#NB"><?=
+                                                                                                                                    $data['kategoribuku'] ?></a></li>
+                            <!-- <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/#F">Fiction</a></li>
                         <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/#H">Historical</a></li>
                         <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/#SI">Self Improvement</a></li>
                         <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/">Business</a></li>
                         <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/">Horror</a></li>
                         <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/">Crime</a></li>
-                        <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/">Science Fiction</a></li>
+                        <li><a class="btn btn-sm btn-outline-primary m-1 p-2" href="<?php echo base_url('/') ?>/category/">Science Fiction</a></li> -->
                     </ul>
+                <?php endforeach; ?>
                 </div>
             </div>
         </div>

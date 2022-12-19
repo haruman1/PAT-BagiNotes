@@ -234,14 +234,14 @@ class Auth extends BaseController
     {
         $this->session->destroy();
 
-        $this->session->setTempdata('berhasilDaftar', 'Anda sudah logout, Silahkan Login Kembali', 10);
+
         unset($_SESSION['username']);
         // or multiple values:
         unset(
             $_SESSION['nama_lengkap'],
             $_SESSION['role']
         );
-
+        $this->session->setTempdata('berhasilDaftar', 'Anda sudah logout, Silahkan Login Kembali', 10);
         return redirect()->to('/login');
     }
 }

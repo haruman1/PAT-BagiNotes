@@ -74,3 +74,11 @@
 </main><!-- ===============================================-->
 <!--    End of Main Content-->
 <!-- ===============================================-->
+<script>
+    $(document).ready(function() {
+        $("h1.nama-atasnya-web").html("Halaman Awal");
+        $("title").html(" E-Library | Halaman Awal");
+        $("li.nama_item_web").html("Halaman Awal");
+
+    })
+</script>
