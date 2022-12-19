@@ -38,7 +38,7 @@ class User extends Migration
             ],
             'is_active' => [
                 'type' => 'text',
-                'default' => '0', // 0 = nonaktif, 1 = aktif
+                'default' => '1', // 0 = nonaktif, 1 = aktif
             ],
             'date_created' => [
                 'type' => 'INT',

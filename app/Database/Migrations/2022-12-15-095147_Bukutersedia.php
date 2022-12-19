@@ -15,7 +15,7 @@ class Bukutersedia extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nama_buku'       => [
+            'judulbuku'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
 
@@ -24,13 +24,13 @@ class Bukutersedia extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'stock' => [
+            'stok' => [
                 'type' => 'int',
                 'constraint' => '50',
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey('nama_buku');
+        $this->forge->addUniqueKey('judulbuku');
         $this->forge->addUniqueKey('id_buku');
         $this->forge->createTable('bukutersedia', true);
     }

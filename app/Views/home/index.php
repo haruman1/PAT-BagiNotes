@@ -13,7 +13,7 @@
                     <p class="text-primary mt-4 mb-5 " data-zanim-xs='{"delay":0.6}'>"Kadang-kadang, kamu membaca buku dan itu memenuhi kamu dengan semangat evangelis yang aneh ini, dan kamu menjadi yakin bahwa dunia yang hancur tidak akan pernah disatukan kembali kecuali dan sampai semua manusia yang hidup membaca buku itu." - John Green, The Fault in Our Stars</p>
                 </div>
                 <div class="overflow-hidden">
-                    <form class="row" action="<?php echo base_url('')  ?>/category/search.php" method="get">
+                    <form class="row" action="<?php echo base_url('')  ?>/category/search" method="get">
                         <div class="input-group mb-3">
                             <input type="text" name="submit-search" class="form-control" placeholder="Cari Buku" aria-label="Cari Buku" aria-describedby="button-addon2">
                             <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>

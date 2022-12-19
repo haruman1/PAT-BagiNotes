@@ -16,14 +16,19 @@ class Home extends BaseController
     }
     public function index()
     {
-        $data = [
+        if ($this->session->get('role') == 2 || $this->session->get('role') == NULL) {
+            $data = [
 
-            'db' => $this->db,
-        ];
+                'db' => $this->db,
+                'session' => $this->session,
+            ];
 
-        return view('/template/awal/header')
-            . view('home/index', $data)
-            . view('/template/awal/footer');
+            return view('/template/awal/header',  $data)
+                . view('home/index', $data)
+                . view('/template/awal/footer');
+        } else {
+            return redirect()->to('/admin');
+        }
     }
     public function tentangkita()
     {

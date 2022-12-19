@@ -17,6 +17,7 @@ class Auth extends BaseController
         $this->builder = $this->db->table('User');
         $this->validation = \Config\Services::validation();
         $this->session = \Config\Services::session();
+        ob_start();
     }
     public function index()
     {
@@ -64,52 +65,52 @@ class Auth extends BaseController
         helper('form');
 
         if ($this->request->getMethod() === 'post') {
-            // $rules = [
-            //     'email_user' => [
-            //         'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.email_user]',
-            //         'errors' => [
-            //             'required' => 'Email wajib di isi',
-            //             'min_length[3]' => 'Email terlalu pendek',
-            //             'max_length[20]' => 'Email terlalu panjang',
-            //             'is_unique' => 'Email sudah ada,silahkan gunakan yang lain',
-            //         ],
-            //     ],
-            //     'nama_user' => [
-            //         'rules' => 'required|min_length[3]|max_length[20]',
-            //         'errors' => [
-            //             'required' => 'Nama wajib di isi',
-            //             'min_length[3]' => 'Nama terlalu pendek',
-            //             'max_length[20]' => 'Nama terlalu panjang',
-            //         ],
-            //     ],
+            $rules = [
+                'email_user' => [
+                    'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.email.id,{id}]',
+                    'errors' => [
+                        'required' => 'Email wajib di isi',
+                        'min_length[3]' => 'Email terlalu pendek',
+                        'max_length[20]' => 'Email terlalu panjang',
+                        'is_unique' => 'Email sudah ada,silahkan gunakan yang lain',
+                    ],
+                ],
+                'nama_user' => [
+                    'rules' => 'required|min_length[3]|max_length[20]',
+                    'errors' => [
+                        'required' => 'Nama wajib di isi',
+                        'min_length[3]' => 'Nama terlalu pendek',
+                        'max_length[20]' => 'Nama terlalu panjang',
+                    ],
+                ],
 
-            //     'username_user' => [
-            //         'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.username_user]',
-            //         'errors' => [
-            //             'required' => 'Username wajib di isi',
-            //             'min_length[3]' => 'Username terlalu pendek',
-            //             'max_length[20]' => 'Username terlalu panjang',
-            //             'is_unique' => 'Username sudah ada, silahkan gunakan yang lain',
+                'username_user' => [
+                    'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.username.id,{id}]',
+                    'errors' => [
+                        'required' => 'Username wajib di isi',
+                        'min_length[3]' => 'Username terlalu pendek',
+                        'max_length[20]' => 'Username terlalu panjang',
+                        'is_unique' => 'Username sudah ada, silahkan gunakan yang lain',
 
-            //         ],
-            //     ],
-            //     'password_user' => [
-            //         'rules' => 'required|trim|min_length[3]',
-            //         'errors' => [
-            //             'required' => 'Password wajib di isi',
-            //             'min_length[3]' => 'Password terlalu pendek',
+                    ],
+                ],
+                'password_user' => [
+                    'rules' => 'required|trim|min_length[3]',
+                    'errors' => [
+                        'required' => 'Password wajib di isi',
+                        'min_length[3]' => 'Password terlalu pendek',
 
-            //         ],
-            //     ],
-            //     'confirmation_password' => [
-            //         'rules' => 'required|trim|min_length[3]|matches[password_user]',
-            //         'errors' => [
-            //             'required' => 'Password konfirmasi wajib di isi',
-            //             'min_length[3]' => 'Password terlalu pendek',
-            //             'matches' => 'Password tidak sama,tolong samakan password',
-            //         ],
-            //     ]
-            // ];
+                    ],
+                ],
+                'confirmation_password' => [
+                    'rules' => 'required|trim|min_length[3]|matches[password_user]',
+                    'errors' => [
+                        'required' => 'Password konfirmasi wajib di isi',
+                        'min_length[3]' => 'Password terlalu pendek',
+                        'matches' => 'Password tidak sama,tolong samakan password',
+                    ],
+                ]
+            ];
 
 
 
@@ -117,47 +118,49 @@ class Auth extends BaseController
             if (!$this->validate(
                 [
                     'email_user' => [
-                        'rules' => 'required|valid_email|is_unique[user.email.id,{id}]',
+                        'rules' => 'required|min_length[3]|is_unique[user.email.id,{id}]',
                         'errors' => [
-                            'required' => '{field} user harus diisi.',
-                            'is_unique' => '{field} sudah pernah daftar,silahkan login .',
-                            'valid_Email' => 'Format {$field} user tidak valid.',
-
-                        ],
-                    ],
-                    'username_user' => [
-                        'rules' => 'required|is_unique[user.username.id,{id}]|max_length[7]',
-                        'errors' => [
-                            'required' => '{field} user harus diisi.',
-                            'is_unique' => '{field} sudah pernah daftar,silahkan login .',
-                            'max_length' => '{field} maksimal 7 karakter.',
+                            'required' => 'Email wajib di isi',
+                            'min_length[3]' => 'Email terlalu pendek',
+                            'is_unique' => 'Email sudah ada,silahkan gunakan yang lain',
                         ],
                     ],
                     'nama_user' => [
-                        'rules' => 'required',
+                        'rules' => 'required|min_length[3]|max_length[20]',
                         'errors' => [
-                            'required' => '{field} mahasiswa harus diisi.',
+                            'required' => 'Nama wajib di isi',
+                            'min_length[3]' => 'Nama terlalu pendek',
+                            'max_length[20]' => 'Nama terlalu panjang',
+                        ],
+                    ],
+
+                    'username_user' => [
+                        'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.username.id,{id}]',
+                        'errors' => [
+                            'required' => 'Username wajib di isi',
+                            'min_length[3]' => 'Username terlalu pendek',
+                            'max_length[20]' => 'Username terlalu panjang',
+                            'is_unique' => 'Username sudah ada, silahkan gunakan yang lain',
 
                         ],
                     ],
                     'password_user' => [
-                        'rules' => 'required|trim|min_length[8]|max_length[15]',
+                        'rules' => 'required|trim|min_length[3]',
                         'errors' => [
-                            'required' => '{field} mahasiswa harus diisi.',
-                            'min_length' => '{field} minimal 8 karakter.',
-                            'max_length' => '{field} maksimal 15 karakter.',
+                            'required' => 'Password wajib di isi',
+                            'min_length[3]' => 'Password terlalu pendek',
+
                         ],
                     ],
                     'confirmation_password' => [
-                        'rules' => 'required|trim|min_length[8]|max_length[15]|matches[password_user]',
+                        'rules' => 'required|trim|min_length[3]|matches[password_user]',
                         'errors' => [
-                            'required' => '{field} mahasiswa harus diisi.',
-                            'min_length' => '{field} minimal 8 karakter.',
-                            'max_length' => '{field} maksimal 15 karakter.',
-                            'matches' => '{field} tidak sama dengan password.',
+                            'required' => 'Password konfirmasi wajib di isi',
+                            'min_length[3]' => 'Password terlalu pendek',
+                            'matches' => 'Password tidak sama,tolong samakan password',
                         ],
                     ],
-                ],
+                ]
 
             )) {
 
@@ -185,6 +188,7 @@ class Auth extends BaseController
                     'date_created' => Time::now('Asia/Jakarta', 'id_ID'),
                 ];
                 $this->AuthModel->save($data);
+                $this->session->setTempdata('berhasilDaftar', 'Selamat,akun anda sudah terdaftar, silahkan login ', 10);
                 return redirect()->to('/login');
                 // $this->session->set('errorNama',);
 
@@ -209,81 +213,83 @@ class Auth extends BaseController
     }
     public function loginSave()
     {
-        $rules = [
-
-
-
-            'username_user' => [
-                'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.username]',
-                'errors' => [
-                    'required' => 'Username wajib di isi',
-                    'min_length[3]' => 'Username terlalu pendek',
-                    'max_length[20]' => 'Username terlalu panjang',
-                    'is_unique' => 'Username sudah ada, silahkan gunakan yang lain',
-
-                ],
-
-                'password_user' => [
-                    'rules' => 'required|trim|min_length[3]|callback_valid_password',
-                    'errors' => [
-                        'required' => 'Password wajib di isi',
-                        'min_length[3]' => 'Password terlalu pendek',
-                        'valid_password' => 'Password harus mengandung huruf kecil, huruf besar, angka, dan karakter spesial, dan tidak boleh lebih dari 15 karakter',
-                    ],
-                ],
-
-                'email_user' => [
-                    'rules' => 'required|min_length[3]|max_length[20]|is_unique[user.email]',
+        if (!$this->validate(
+            [
+                'login_username' => [
+                    'rules' => 'required|min_length[3]',
                     'errors' => [
                         'required' => 'Email wajib di isi',
                         'min_length[3]' => 'Email terlalu pendek',
-                        'max_length[20]' => 'Email terlalu panjang',
-                        'is_unique' => 'Email sudah ada,silahkan gunakan yang lain',
+
                     ],
                 ],
 
-                // 'tanggal_dibuat' => 'required|min_length[3]|max_length[20]',
+
+
+                'login_password' => [
+                    'rules' => 'required|trim',
+                    'errors' => [
+                        'required' => 'Password wajib di isi',
+
+
+                    ],
+                ],
+
             ]
-        ];
-        helper('form');
-        $data = [
-            'title' => 'Register' . $_ENV['app.name'],
-        ];
-        $this->session->waktuhabis = time() - 10;
 
-        return view('template/auth/header') . view('auth/viewLogin', [
-            'validation' => $this->validation,
-            'session' => $this->session,
-            'title' => 'Register' . $_ENV['app.name'],
-            'waktuHabis' => $this->session->waktuhabis,
-        ], $data)
-            . view('template/auth/footer');
+        )) {
+            helper('form');
+            $data = [
+                'title' => 'Register' . $_ENV['app.name'],
+            ];
+            $this->session->waktuhabis = time() - 10;
+            $this->session->setTempdata('errorUsername', $this->validation->getError('login_username'), 10);
+            $this->session->setTempdata('errorPassword', $this->validation->getError('login_password'), 10);
+            return view('template/auth/header') . view('auth/viewLogin', [
+                'validation' => $this->validation,
+                'session' => $this->session,
+                'title' => 'Register' . $_ENV['app.name'],
+                'waktuHabis' => $this->session->waktuhabis,
+            ], $data)
+                . view('template/auth/footer');
+        } else {
+            $username = $this->request->getVar('login_username');
+            $password = $this->request->getVar('login_password');
+            $cek = $this->AuthModel->where('username', $username)->first();
+            if ($cek) {
+                $passwordHash = $cek['password'];
+                if (password_verify($password, $passwordHash)) {
+                    $data = [
+                        'username' => $cek['username'],
+                        'id_user' => $cek['id_user'],
+                        'nama_lengkap' => $cek['nama_lengkap'],
+                        'role' => $cek['role'],
+                    ];
+                    $this->session->set($data);
+                    return redirect()->to('/');
+                } else {
+                    $this->session->setTempdata('errorPassword', 'Password salah', 10);
+
+                    return redirect()->to('/login');
+                }
+            } else {
+                $this->session->setTempdata('errorUsername', 'Username tidak terdaftar', 10);
+                return redirect()->to('/login');
+            }
+        }
     }
-    public function _insert($data)
+    public function logout()
     {
+        $this->session->destroy();
 
-        $data_string = json_encode($data);
-        $curl = curl_init('http://localhost:8080/api/user');
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-
-        curl_setopt(
-            $curl,
-            CURLOPT_HTTPHEADER,
-            array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($data_string)
-            )
+        $this->session->setTempdata('berhasilDaftar', 'Anda sudah logout, Silahkan Login Kembali', 10);
+        unset($_SESSION['username']);
+        // or multiple values:
+        unset(
+            $_SESSION['nama_lengkap'],
+            $_SESSION['role']
         );
 
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);  // Make it so the data coming back is put into a string
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);  // Insert the data
-
-        // Send the request
-        $result = curl_exec($curl);
-
-        // Free up the resources $curl is using
-        curl_close($curl);
-
-        echo $result;
+        return redirect()->to('/login');
     }
 }

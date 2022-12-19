@@ -36,12 +36,27 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // direktori asli
+
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::tentangkita');
 $routes->get('/category', 'CategoryController::index');
 $routes->get('/category/borrow', 'CategoryController::pinjam_buku');
+$routes->get('/category/search', 'CategoryController::search');
+$routes->get('/category/mybook', 'CategoryController::buku_saya');
 
+$routes->get('/login', 'Auth::login');
+$routes->post('/login', 'Auth::loginSave');
+$routes->get('/register', 'Auth::register');
+$routes->post('/register', 'Auth::save');
+$routes->get('/logout', 'Auth::logout');
 
+//route admin
+$routes->get('/admin', 'Admin::index');
+//mangill isi database
+
+$routes->get('/database', 'IsiDatabase::index');
+$routes->get('/database/halamanbuku', 'IsiDatabase::hlmnbuku');
+$routes->get('/database/buku', 'IsiDatabase::bukutersedia');
 //manggil Trigger
 $routes->get('/trigger', 'SemuaTrigger::index');
 $routes->get('/trigger/log/delete', 'SemuaTrigger::log_delete_user');
@@ -55,7 +70,13 @@ $routes->get('/trigger/buku/update', 'SemuaTrigger::trigger_perubahan_buku');
 $routes->get('/trigger/buku/jumlah', 'SemuaTrigger::update_jumlah_peminjaman');
 $routes->get('/trigger/buku/stok', 'SemuaTrigger::update_stok_pengembalian');
 $routes->get('/trigger/buku/trending', 'SemuaTrigger::viewTrendingbook');
+//manggil hasil database
 
+$routes->get('/database/berhasil', 'IsiDatabase::hlmnbuku');
+$routes->get('/database/gagal', 'IsiDatabase::hlmnbuku');
+
+$routes->get('/database/berhasil', 'IsiDatabase::bukutersedia');
+$routes->get('/database/gagal', 'IsiDatabase::bukutersedia');
 //hasilnya trigger
 $routes->get('/trigger/berhasil', 'SemuaTrigger::log_delete_user');
 $routes->get('/trigger/gagal', 'SemuaTrigger::log_delete_user');
@@ -101,10 +122,7 @@ $routes->get('/trigger/gagal', 'SemuaTrigger::viewTrendingbook');
 
 
 
-$routes->get('/login', 'Auth::login');
-$routes->post('/login', 'Auth::loginSave');
-$routes->get('/register', 'Auth::register');
-$routes->post('/register', 'Auth::save');
+// API
 // $routes->post('/register', 'Auth::register');
 $routes->get('/api/user', 'HandlerLogin::index');
 

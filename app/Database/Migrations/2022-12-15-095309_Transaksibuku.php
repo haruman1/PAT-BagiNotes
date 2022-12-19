@@ -19,6 +19,10 @@ class Transaksibuku extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'id_user' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'judulbuku' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
