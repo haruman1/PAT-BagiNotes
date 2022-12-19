@@ -52,6 +52,9 @@ $routes->get('/logout', 'Auth::logout');
 
 //route admin
 $routes->get('/admin', 'Admin::index');
+$routes->get('/admin/anggota', 'Admin::anggota');
+$routes->get('/admin/buku', 'Admin::buku');
+$routes->get('/admin/transaksi', 'Admin::transaksi');
 //mangill isi database
 
 $routes->get('/database', 'IsiDatabase::index');

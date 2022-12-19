@@ -26,8 +26,55 @@ class Admin extends BaseController
                 'session' => $this->session,
             ];
             return view('/template/admin/header', $data)
-                . view('/template/admin/sidebar', $data)
-                . view('admin/book/tambah_buku', $data)
+                . view('admin/index', $data)
+                . view('/template/admin/footer');
+        }
+    }
+    public function anggota()
+    {
+        if ($this->session->get('role') == 2 || $this->session->get('role') == NULL) {
+            return redirect()->to('/');
+        } else {
+            $data = [
+                'title' => 'Admin',
+                'db' => $this->db,
+                'request' => $this->request,
+                'session' => $this->session,
+            ];
+            return view('/template/admin/header', $data)
+                . view('admin/kelolaanggota', $data)
+                . view('/template/admin/footer');
+        }
+    }
+    public function buku()
+    {
+        if ($this->session->get('role') == 2 || $this->session->get('role') == NULL) {
+            return redirect()->to('/');
+        } else {
+            $data = [
+                'title' => 'Admin',
+                'db' => $this->db,
+                'request' => $this->request,
+                'session' => $this->session,
+            ];
+            return view('/template/admin/header', $data)
+                . view('admin/kelolabuku', $data)
+                . view('/template/admin/footer');
+        }
+    }
+    public function transaksi()
+    {
+        if ($this->session->get('role') == 2 || $this->session->get('role') == NULL) {
+            return redirect()->to('/');
+        } else {
+            $data = [
+                'title' => 'Admin',
+                'db' => $this->db,
+                'request' => $this->request,
+                'session' => $this->session,
+            ];
+            return view('/template/admin/header', $data)
+                . view('admin/transaksi', $data)
                 . view('/template/admin/footer');
         }
     }
