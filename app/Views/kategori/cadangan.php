@@ -4,7 +4,7 @@
 <div class="container">
     <?php
 
-    $id_buku = $_GET['id_buku'];
+    $id_buku = $request->getGet('id_buku');
     $sql =  $db->table('hlmnbuku')->where('id_buku', $id_buku)->get();
     $data = $sql->getResultArray();
     foreach ($data as $data) {
@@ -12,6 +12,10 @@
     ?>
         <div class="overflow-hidden mb-4" data-zanim-timeline="{}" data-zanim-trigger="scroll">
             <div data-zanim-xs='{"delay":0}'>
+                <?php if ($session->getTempdata('pesanBuku', 10)) {
+                    echo $session->getTempdata('pesanBuku', 10);
+                }
+                ?>
                 <h3 data-zanim-xs='{"delay":0.1}'><?= $data['judulbuku'] ?></h3>
                 <p data-zanim-xs='{"delay":0.1}'>By <?= $data['author'] ?></p>
             </div>
@@ -85,7 +89,7 @@
         ?>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <form class="modal-dialog" method="post" action="<?php base_url('/') ?>/category/borrow/">
+                <form class="modal-dialog" method="post" action="<?php base_url('/') ?>/category/borrow/book">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Pinjam Buku</h5>
@@ -125,11 +129,7 @@
                                     <input type="text" class="form-control mb-3" id="file_buku" name="file_buku" value="<?= $data['file_buku'] ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <?php
-                                    if ($session->getTempdata('errorAuthor', 10)) {
-                                        echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorAuthor') . '</small>';
-                                    }
-                                    ?>
+
                                     <h5>Author</h5>
                                     <p class="form-control mb-3" id="author" name="author" data-zanim-xs='{"delay":0.5}'><?= $data['author'] ?></p>
                                 </div>

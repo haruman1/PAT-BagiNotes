@@ -62,7 +62,7 @@ class CategoryController extends BaseController
             if (!$this->validate(
                 [
                     'id_buku' => [
-                        'rules' => 'required|min_length[3]|',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => 'id Buku di isi',
                         ],
@@ -74,15 +74,9 @@ class CategoryController extends BaseController
 
                         ],
                     ],
-                    'author' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => 'Author wajib di isi',
 
-                        ],
-                    ],
                     'file_buku' => [
-                        'rules' => 'required|',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => 'File Buku wajib di isi',
 
@@ -90,18 +84,18 @@ class CategoryController extends BaseController
                     ],
 
                     'tanggal_peminjaman' => [
-                        'rules' => 'required|valid_date[mm/dd/YYYY]',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => 'Tanggal Peminjaman wajib di isi',
-                            'valid_date' => 'Format tanggal salah',
+
 
                         ],
                     ],
                     'tanggal_pengembalian' => [
-                        'rules' => 'required|valid_date[mm/dd/YYYY]',
+                        'rules' => 'required',
                         'errors' => [
                             'required' => 'Tanggal pengembalian wajib di isi',
-                            'valid_date' => 'Format tanggal salah',
+
 
                         ],
                     ],
@@ -123,25 +117,25 @@ class CategoryController extends BaseController
                     'request' => $this->request,
                     'validation' => $this->validation,
                 ];
-                return view('/template/awal/header')
-                    . view('template/sidebar/nama-halaman')
-                    . view('template/sidebar/search-halaman')
-                    . view('kategori/viewPinjam', $data)
-                    . view('/template/awal/footer', $data);
+                return redirect()->to(base_url('/category/borrow/?id_buku=' . $this->request->getVar('id_buku')));
+                $this->session->setTempdata('pesanBuku', 'Buku berhasil di pinjam', 10);
             } else {
                 $data = [
                     'id_buku' => $this->request->getVar('id_buku'),
                     'id_user' => $this->session->get('id_user'),
                     'judulbuku' => $this->request->getVar('judulbuku'),
-
                     'tanggal_peminjaman' => $this->request->getVar('tanggal_peminjaman'),
                     'tanggal_pengembalian' => $this->request->getVar('tanggal_pengembalian'),
                     'file_buku' => $this->request->getVar('file_buku'),
 
                 ];
                 $this->cModel->save($data);
-                $this->session->setTempdata('berhasilDaftar');
+                $this->session->setTempdata('pesanBuku', 'Buku berhasil di pinjam', 10);
+                return redirect()->to(base_url('/category/mybook'));
             }
+        } else {
+            $this->session->setTempdata('pesanBuku', 'Maaf, akun kamu tidak bisa meminjam buku ', 10);
+            return redirect()->to('/');
         }
     }
     public function search()

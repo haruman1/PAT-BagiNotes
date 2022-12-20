@@ -41,7 +41,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::tentangkita');
 $routes->get('/category', 'CategoryController::index');
 $routes->get('/category/borrow', 'CategoryController::pinjam_buku');
-$routes->post('/category/borrow', 'CategoryController::savePinjam');
+$routes->post('/category/borrow/book', 'CategoryController::savePinjam');
 $routes->get('/category/search', 'CategoryController::search');
 $routes->get('/category/mybook', 'CategoryController::buku_saya');
 

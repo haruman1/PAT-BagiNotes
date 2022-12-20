@@ -8505,3 +8505,27 @@ in APPPATH\Views\kategori\cadangan.php on line 15.
  7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-19 22:47:06 --> Undefined array key "id_buku"
+in APPPATH\Views\kategori\viewPinjam.php on line 3.
+ 1 APPPATH\Views\kategori\viewPinjam.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_buku"', 'APPPATH\\Views\\kategori\\viewPinjam.php', 3)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\kategori\\viewPinjam.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('kategori/viewPinjam', [], true)
+ 5 APPPATH\Controllers\CategoryController.php(129): view('kategori/viewPinjam', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\CategoryController->savePinjam()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-19 22:47:29 --> Undefined array key "id_buku"
+in APPPATH\Views\kategori\cadangan.php on line 7.
+ 1 APPPATH\Views\kategori\cadangan.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_buku"', 'APPPATH\\Views\\kategori\\cadangan.php', 7)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\kategori\\cadangan.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('kategori/cadangan', [], true)
+ 5 APPPATH\Controllers\CategoryController.php(52): view('kategori/cadangan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\CategoryController->pinjam_buku()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
