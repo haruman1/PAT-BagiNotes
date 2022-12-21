@@ -47,8 +47,9 @@
             </thead>
             <tbody>
                 <?php
-                $sql = $db->query("SELECT bukutersedia.id_buku, bukutersedia.judulbuku, transaksibuku.tanggal_peminjaman,  transaksibuku.tanggal_pengembalian FROM user  INNER JOIN mybook ON  user.id_user = mybook.id_user INNER JOIN transaksibuku ON transaksibuku.id_user = user.id_user INNER JOIN bukutersedia ON bukutersedia.id_buku = mybook.id_buku WHERE user.id_user = '$session->getGet(id_user)'");
-
+                $id_buku = $session->get('id_user');
+                $sql = $db->query("SELECT * FROM transaksibuku WHERE transaksibuku.id_user = '$id_buku'");
+                var_dump($sql->getResultArray());
                 foreach ($sql->getResultArray() as $data) {
 
                     echo "<tr>";
