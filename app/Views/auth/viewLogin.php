@@ -4,81 +4,115 @@ $login_username_msg = "";
 $login_username_valid = false;
 $login_password_valid = false;
 ?>
-<section class="text-center py-0">
-    <div class="bg-holder overlay overlay-2" style="background-image:url(<?php echo base_url('/') ?>/asset/img/bg3.jpg);"></div>
-    <!--/.bg-holder-->
-    <div class="container">
-        <div class="row min-vh-100 align-items-center">
-            <div class="col-md-8 col-lg-5 mx-auto" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-                <div class="mb-2" data-zanim-xs='{"delay":0,"duration":1}'><a href="<?php echo base_url('/') ?>"><img src="<?php echo base_url('/') ?>/asset/img/logo/128x128/E-Lib Logo White.png" alt="logo" /></a></div>
-                <div class="card" data-zanim-xs='{"delay":0.1,"duration":1}'>
-                    <div class="card-body p-md-5">
-                        <h4 class="text-uppercase fs-0 fs-md-1">login with <?php echo getenv('app.name') ?></h4>
-                        <form class="text-start mt-4 needs-validation" method="POST" action="/login" role="form">
-                            <?php
-                            if ($session->getTempdata('berhasilDaftar', 10)) {
-                                echo ' <small class="text-success pl-3">' . $session->getTempdata('berhasilDaftar') . '</small>';
-                            } else if ($session->getTempdata('errorUsername', 10)) {
-                                echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorUsername') . '</small>';
-                            }
-                            ?>
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v4.2.2
+* @link https://coreui.io
+* Copyright (c) 2022 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+<html lang="en">
+  <head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>CoreUI Free Bootstrap Admin Template</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendors styles-->
+    <link rel="stylesheet" href="vendors/simplebar/css/simplebar.css">
+    <link rel="stylesheet" href="css/vendors/simplebar.css">
+    <!-- Main styles for this application-->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- We use those styles to show code examples, you should remove them in your application.-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
+    <link href="css/examples.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-                            <div class="row align-items-center">
-                                <div class="col-12">
-
-                                    <div class="input-group">
-
-                                        <?php echo csrf_field() ?>
-                                        <div class="input-group-text bg-100">
-
-                                            <span class="far fa-user"></span>
-                                        </div>
-
-                                        <input class="form-control" type="text" placeholder="Masukkan username Anda" aria-label="Text input with dropdown button" name="login_username" value="<?php if (isset($_COOKIE['login_username_cookie'])) {
-                                                                                                                                                                                                    echo $_COOKIE['login_username_cookie'];
-                                                                                                                                                                                                } ?>" />
-
-                                    </div>
-
-                                </div>
-                                <?php
-                                if ($session->getTempdata('errorPassword')) {
-                                    echo ' <small class="text-danger pl-3">' . $session->getTempdata('errorPassword') . '</small>';
-                                }
-                                ?>
-                                <div class="col-12 mt-2 mt-sm-4">
-                                    <div class="input-group">
-                                        <div class="input-group-text bg-100">
-
-                                            <span class="fas fa-lock"></span>
-                                        </div>
-
-                                        <input class="form-control" type="Password" placeholder="Password" aria-label="Text input with dropdown button" name="login_password" value="<?php if (isset($_COOKIE['login_password_cookie'])) {
-                                                                                                                                                                                            echo $_COOKIE['login_password_cookie'];
-                                                                                                                                                                                        } ?>" />
-
-                                    </div>
-                                    <small class="text-danger pl-3"><?php echo $login_pwd_msg ?></small>
-                                </div>
-                            </div>
-                            <div class="form-check form-switch align-items-center mt-3">
-                                <input class="form-check-input" type="checkbox" name="remember[]" id="remember" <?php if (isset($_COOKIE["login_username_cookie"])) { ?> checked <?php } ?>>
-                                <label class="form-check-label" for="remember">Remember me</label>
-                            </div>
-
-                            <div class="col-12 mt-2 mt-sm-3"><button class="btn btn-primary w-100" type="submit" name="submit_login">Login</button></div>
-                            <div class="card-footer text-center pt-2 px-lg-2 px-1">
-                                <p class="mb-0 text-sm mx-auto">
-                                    Don't have an account?
-                                    <?php
-                                    echo anchor('/register', 'register', 'class="text-info text-gradient font-weight-bold"');
-                                    ?> </p>
-                            </div>
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      // Shared ID
+      gtag('config', 'UA-118965717-3');
+      // Bootstrap ID
+      gtag('config', 'UA-118965717-5');
+    </script>
+  </head>
+  <body>
+    <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card-group d-block d-md-flex row">
+              <div class="card col-md-7 p-4 mb-0">
+                <div class="card-body">
+                  <h1>Login</h1>
+                  <p class="text-medium-emphasis">Sign In to your account</p>
+                  <div class="input-group mb-3"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                      </svg></span>
+                    <input class="form-control" type="text" placeholder="Username">
+                  </div>
+                  <div class="input-group mb-4"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                      </svg></span>
+                    <input class="form-control" type="password" placeholder="Password">
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <button class="btn btn-primary px-4" type="button">Login</button>
                     </div>
-                    </form>
+                    <div class="col-6 text-end">
+                      <button class="btn btn-link px-0" type="button">Forgot password?</button>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="card col-md-5 text-white bg-primary py-5">
+                <div class="card-body text-center">
+                  <div>
+                    <h2>Sign up</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    </div><!-- end of .container-->
-</section>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script>
+    </script>
+
+  </body>
+</html>

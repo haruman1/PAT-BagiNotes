@@ -23,9 +23,9 @@ class Home extends BaseController
                 'session' => $this->session,
             ];
 
-            return view('/template/awal/header',  $data)
+            return view('/template/home/header',  $data)
                 . view('home/index', $data)
-                . view('/template/awal/footer', $data);
+                . view('/template/home/footer', $data);
         } else {
             return redirect()->to('/admin');
         }
